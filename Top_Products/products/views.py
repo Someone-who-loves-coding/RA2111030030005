@@ -1,15 +1,12 @@
-from django.shortcuts import get_object_or_404,render
+from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from .models import Product
-
-def Home(request):
-    return render(request,'base.html')
 
 def top_products(request, category_name):
     n = int(request.GET.get('n', 10))
     page = int(request.GET.get('page', 1))
-    sort_by = request.GET.get('sort_by', 'rating')  
-    sort_order = request.GET.get('sort_order', 'desc')  
+    sort_by = request.GET.get('sort_by', 'rating')
+    sort_order = request.GET.get('sort_order', 'desc')
 
     start_index = (page - 1) * n
     end_index = start_index + n
